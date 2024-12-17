@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <vector>
+#include <string>
 
 #include "seq/filateva_e_radix_sort/include/ops_seq.hpp"
 
@@ -37,6 +38,10 @@ TEST(filateva_e_radix_sort_seq, test_size_3) {
   radixSort.post_processing();
 
   std::sort(tResh.begin(), tResh.end());
+
+  std::string s = "\nEEEEEEEEEEEEE\n";
+  s += std::to_string(0 % 10) + "\n";
+  std::cerr << s;
 
   EXPECT_EQ(answer.size(), tResh.size());
   for (int i = 0; i < size; i++) {
