@@ -89,12 +89,6 @@ TEST(filateva_e_radix_sort_mpi, test_size_10) {
   if (world.rank() == 0) {
     std::sort(tResh.begin(), tResh.end());
 
-    std::string s = "\nVector\n";
-    for (int i = 0; i < size; i++) {
-      s += std::to_string(vec[i]) + " ";
-    }
-    std::cerr << s << "\n";
-
     EXPECT_EQ(answer.size(), tResh.size());
     for (int i = 0; i < size; i++) {
       EXPECT_EQ(answer[i], tResh[i]);

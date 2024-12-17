@@ -58,14 +58,17 @@ bool filateva_e_radix_sort_mpi::RadixSort::run() {
 
   boost::mpi::scatterv(world, arr.data(), distribution, displacement, local_vec.data(), local_size, 0);
 
+  int max_r = -1;
+
   for (long unsigned int i = 0; i < local_vec.size(); i++) {
+    max_r = std::max(max_r, std::abs(arr[i]));
     if (local_vec[i] >= 0) {
       radix_list[local_vec[i] % raz].push_back(local_vec[i]);
     } else {
       negativ_radix_list[std::abs(local_vec[i]) % raz].push_back(std::abs(local_vec[i]));
     }
   }
-  while ((int)radix_list[0].size() + (int)negativ_radix_list[0].size() != local_size) {
+  while (max_r / (raz / 10) > 0) {
     raz *= 10;
     std::vector<std::list<int>> temp(kol);
     std::vector<std::list<int>> negativ_temp(kol);
@@ -92,12 +95,6 @@ bool filateva_e_radix_sort_mpi::RadixSort::run() {
   }
 
   boost::mpi::gatherv(world, local_vec.data(), local_size, local_ans.data(), distribution, displacement, 0);
-
-  std::string s = "\nRank: " + std::to_string(world.rank()) + " vector:\n";
-  for (int j = 0; j < local_size; j++) {
-    s += std::to_string(local_vec[j]) + " ";
-  }
-  std::cerr << s << "\n";
 
   if (world.rank() == 0) {
     std::vector<int> smesh(world.size(), 0);
