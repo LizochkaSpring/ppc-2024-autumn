@@ -93,6 +93,12 @@ bool filateva_e_radix_sort_mpi::RadixSort::run() {
 
   boost::mpi::gatherv(world, local_vec.data(), local_size, local_ans.data(), distribution, displacement, 0);
 
+  std::string s = "\nRank: " + std::to_string(world.rank()) + " vector:\n";
+  for (int j = 0; j < local_size; j++) {
+    s += to_string(local_vec[j]) + " ";
+  }
+  std::cerr << s << "\n";
+
   if (world.rank() == 0) {
     std::vector<int> smesh(world.size(), 0);
     for (int j = 0; j < size; j++) {
