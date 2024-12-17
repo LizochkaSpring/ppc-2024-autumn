@@ -68,6 +68,7 @@ bool filateva_e_radix_sort_mpi::RadixSort::run() {
       negativ_radix_list[std::abs(local_vec[i]) % raz].push_back(std::abs(local_vec[i]));
     }
   }
+  boost::mpi::broadcast(world, max_r, 0);
   while (max_r / (raz / 10) > 0) {
     raz *= 10;
     std::vector<std::list<int>> temp(kol);
