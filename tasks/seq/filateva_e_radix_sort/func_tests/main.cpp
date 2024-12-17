@@ -39,10 +39,6 @@ TEST(filateva_e_radix_sort_seq, test_size_3) {
 
   std::sort(tResh.begin(), tResh.end());
 
-  std::string s = "\nEEEEEEEEEEEEE\n";
-  s += std::to_string(0 % 10) + "\n";
-  std::cerr << s;
-
   EXPECT_EQ(answer.size(), tResh.size());
   for (int i = 0; i < size; i++) {
     EXPECT_EQ(answer[i], tResh[i]);
