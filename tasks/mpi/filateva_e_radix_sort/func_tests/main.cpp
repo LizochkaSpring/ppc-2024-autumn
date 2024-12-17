@@ -96,194 +96,194 @@ TEST(filateva_e_radix_sort_mpi, test_size_10) {
   }
 }
 
-// TEST(filateva_e_radix_sort_mpi, test_size_30) {
-//   boost::mpi::communicator world;
-//   int size = 30;
-//   std::vector<int> vec;
-//   std::vector<int> answer;
-//   std::vector<int> tResh;
+TEST(filateva_e_radix_sort_mpi, test_size_30) {
+  boost::mpi::communicator world;
+  int size = 30;
+  std::vector<int> vec;
+  std::vector<int> answer;
+  std::vector<int> tResh;
 
-//   std::shared_ptr<ppc::core::TaskData> taskData = std::make_shared<ppc::core::TaskData>();
+  std::shared_ptr<ppc::core::TaskData> taskData = std::make_shared<ppc::core::TaskData>();
 
-//   if (world.rank() == 0) {
-//     vec.resize(size);
-//     answer.resize(size);
+  if (world.rank() == 0) {
+    vec.resize(size);
+    answer.resize(size);
 
-//     GeneratorVector(vec);
-//     tResh = vec;
+    GeneratorVector(vec);
+    tResh = vec;
 
-//     taskData->inputs.emplace_back(reinterpret_cast<uint8_t *>(vec.data()));
-//     taskData->outputs.emplace_back(reinterpret_cast<uint8_t *>(answer.data()));
-//     taskData->inputs_count.emplace_back(size);
-//     taskData->outputs_count.emplace_back(size);
-//   }
+    taskData->inputs.emplace_back(reinterpret_cast<uint8_t *>(vec.data()));
+    taskData->outputs.emplace_back(reinterpret_cast<uint8_t *>(answer.data()));
+    taskData->inputs_count.emplace_back(size);
+    taskData->outputs_count.emplace_back(size);
+  }
 
-//   filateva_e_radix_sort_mpi::RadixSort radixSort(taskData);
+  filateva_e_radix_sort_mpi::RadixSort radixSort(taskData);
 
-//   ASSERT_TRUE(radixSort.validation());
-//   radixSort.pre_processing();
-//   radixSort.run();
-//   radixSort.post_processing();
+  ASSERT_TRUE(radixSort.validation());
+  radixSort.pre_processing();
+  radixSort.run();
+  radixSort.post_processing();
 
-//   if (world.rank() == 0) {
-//     std::sort(tResh.begin(), tResh.end());
+  if (world.rank() == 0) {
+    std::sort(tResh.begin(), tResh.end());
 
-//     EXPECT_EQ(answer.size(), tResh.size());
-//     for (int i = 0; i < size; i++) {
-//       EXPECT_EQ(answer[i], tResh[i]);
-//     }
-//   }
-// }
+    EXPECT_EQ(answer.size(), tResh.size());
+    for (int i = 0; i < size; i++) {
+      EXPECT_EQ(answer[i], tResh[i]);
+    }
+  }
+}
 
-// TEST(filateva_e_radix_sort_mpi, test_size_100) {
-//   boost::mpi::communicator world;
-//   int size = 100;
-//   std::vector<int> vec;
-//   std::vector<int> answer;
-//   std::vector<int> tResh;
+TEST(filateva_e_radix_sort_mpi, test_size_100) {
+  boost::mpi::communicator world;
+  int size = 100;
+  std::vector<int> vec;
+  std::vector<int> answer;
+  std::vector<int> tResh;
 
-//   std::shared_ptr<ppc::core::TaskData> taskData = std::make_shared<ppc::core::TaskData>();
+  std::shared_ptr<ppc::core::TaskData> taskData = std::make_shared<ppc::core::TaskData>();
 
-//   if (world.rank() == 0) {
-//     vec.resize(size);
-//     answer.resize(size);
+  if (world.rank() == 0) {
+    vec.resize(size);
+    answer.resize(size);
 
-//     GeneratorVector(vec);
-//     tResh = vec;
+    GeneratorVector(vec);
+    tResh = vec;
 
-//     taskData->inputs.emplace_back(reinterpret_cast<uint8_t *>(vec.data()));
-//     taskData->outputs.emplace_back(reinterpret_cast<uint8_t *>(answer.data()));
-//     taskData->inputs_count.emplace_back(size);
-//     taskData->outputs_count.emplace_back(size);
-//   }
+    taskData->inputs.emplace_back(reinterpret_cast<uint8_t *>(vec.data()));
+    taskData->outputs.emplace_back(reinterpret_cast<uint8_t *>(answer.data()));
+    taskData->inputs_count.emplace_back(size);
+    taskData->outputs_count.emplace_back(size);
+  }
 
-//   filateva_e_radix_sort_mpi::RadixSort radixSort(taskData);
+  filateva_e_radix_sort_mpi::RadixSort radixSort(taskData);
 
-//   ASSERT_TRUE(radixSort.validation());
-//   radixSort.pre_processing();
-//   radixSort.run();
-//   radixSort.post_processing();
+  ASSERT_TRUE(radixSort.validation());
+  radixSort.pre_processing();
+  radixSort.run();
+  radixSort.post_processing();
 
-//   if (world.rank() == 0) {
-//     std::sort(tResh.begin(), tResh.end());
+  if (world.rank() == 0) {
+    std::sort(tResh.begin(), tResh.end());
 
-//     EXPECT_EQ(answer.size(), tResh.size());
-//     for (int i = 0; i < size; i++) {
-//       EXPECT_EQ(answer[i], tResh[i]);
-//     }
-//   }
-// }
+    EXPECT_EQ(answer.size(), tResh.size());
+    for (int i = 0; i < size; i++) {
+      EXPECT_EQ(answer[i], tResh[i]);
+    }
+  }
+}
 
-// TEST(filateva_e_radix_sort_mpi, test_size_211) {
-//   boost::mpi::communicator world;
-//   int size = 211;
-//   std::vector<int> vec;
-//   std::vector<int> answer;
-//   std::vector<int> tResh;
+TEST(filateva_e_radix_sort_mpi, test_size_211) {
+  boost::mpi::communicator world;
+  int size = 211;
+  std::vector<int> vec;
+  std::vector<int> answer;
+  std::vector<int> tResh;
 
-//   std::shared_ptr<ppc::core::TaskData> taskData = std::make_shared<ppc::core::TaskData>();
+  std::shared_ptr<ppc::core::TaskData> taskData = std::make_shared<ppc::core::TaskData>();
 
-//   if (world.rank() == 0) {
-//     vec.resize(size);
-//     answer.resize(size);
+  if (world.rank() == 0) {
+    vec.resize(size);
+    answer.resize(size);
 
-//     GeneratorVector(vec);
-//     tResh = vec;
+    GeneratorVector(vec);
+    tResh = vec;
 
-//     taskData->inputs.emplace_back(reinterpret_cast<uint8_t *>(vec.data()));
-//     taskData->outputs.emplace_back(reinterpret_cast<uint8_t *>(answer.data()));
-//     taskData->inputs_count.emplace_back(size);
-//     taskData->outputs_count.emplace_back(size);
-//   }
+    taskData->inputs.emplace_back(reinterpret_cast<uint8_t *>(vec.data()));
+    taskData->outputs.emplace_back(reinterpret_cast<uint8_t *>(answer.data()));
+    taskData->inputs_count.emplace_back(size);
+    taskData->outputs_count.emplace_back(size);
+  }
 
-//   filateva_e_radix_sort_mpi::RadixSort radixSort(taskData);
+  filateva_e_radix_sort_mpi::RadixSort radixSort(taskData);
 
-//   ASSERT_TRUE(radixSort.validation());
-//   radixSort.pre_processing();
-//   radixSort.run();
-//   radixSort.post_processing();
+  ASSERT_TRUE(radixSort.validation());
+  radixSort.pre_processing();
+  radixSort.run();
+  radixSort.post_processing();
 
-//   if (world.rank() == 0) {
-//     std::sort(tResh.begin(), tResh.end());
+  if (world.rank() == 0) {
+    std::sort(tResh.begin(), tResh.end());
 
-//     EXPECT_EQ(answer.size(), tResh.size());
-//     for (int i = 0; i < size; i++) {
-//       EXPECT_EQ(answer[i], tResh[i]);
-//     }
-//   }
-// }
+    EXPECT_EQ(answer.size(), tResh.size());
+    for (int i = 0; i < size; i++) {
+      EXPECT_EQ(answer[i], tResh[i]);
+    }
+  }
+}
 
-// TEST(filateva_e_radix_sort_mpi, test_size_different) {
-//   boost::mpi::communicator world;
-//   int size = 10;
-//   std::vector<int> vec;
-//   std::vector<int> answer;
+TEST(filateva_e_radix_sort_mpi, test_size_different) {
+  boost::mpi::communicator world;
+  int size = 10;
+  std::vector<int> vec;
+  std::vector<int> answer;
 
-//   std::shared_ptr<ppc::core::TaskData> taskData = std::make_shared<ppc::core::TaskData>();
+  std::shared_ptr<ppc::core::TaskData> taskData = std::make_shared<ppc::core::TaskData>();
 
-//   if (world.rank() == 0) {
-//     vec.resize(size);
-//     answer.resize(size);
+  if (world.rank() == 0) {
+    vec.resize(size);
+    answer.resize(size);
 
-//     taskData->inputs.emplace_back(reinterpret_cast<uint8_t *>(vec.data()));
-//     taskData->outputs.emplace_back(reinterpret_cast<uint8_t *>(answer.data()));
-//     taskData->inputs_count.emplace_back(size);
-//     taskData->outputs_count.emplace_back(size + 1);
-//   }
+    taskData->inputs.emplace_back(reinterpret_cast<uint8_t *>(vec.data()));
+    taskData->outputs.emplace_back(reinterpret_cast<uint8_t *>(answer.data()));
+    taskData->inputs_count.emplace_back(size);
+    taskData->outputs_count.emplace_back(size + 1);
+  }
 
-//   filateva_e_radix_sort_mpi::RadixSort radixSort(taskData);
+  filateva_e_radix_sort_mpi::RadixSort radixSort(taskData);
 
-//   if (world.rank() == 0) {
-//     EXPECT_FALSE(radixSort.validation());
-//   }
-// }
+  if (world.rank() == 0) {
+    EXPECT_FALSE(radixSort.validation());
+  }
+}
 
-// TEST(filateva_e_radix_sort_mpi, test_size_0) {
-//   boost::mpi::communicator world;
-//   int size = 0;
-//   std::vector<int> vec;
-//   std::vector<int> answer;
+TEST(filateva_e_radix_sort_mpi, test_size_0) {
+  boost::mpi::communicator world;
+  int size = 0;
+  std::vector<int> vec;
+  std::vector<int> answer;
 
-//   std::shared_ptr<ppc::core::TaskData> taskData = std::make_shared<ppc::core::TaskData>();
+  std::shared_ptr<ppc::core::TaskData> taskData = std::make_shared<ppc::core::TaskData>();
 
-//   if (world.rank() == 0) {
-//     vec.resize(size);
-//     answer.resize(size);
+  if (world.rank() == 0) {
+    vec.resize(size);
+    answer.resize(size);
 
-//     taskData->inputs.emplace_back(reinterpret_cast<uint8_t *>(vec.data()));
-//     taskData->outputs.emplace_back(reinterpret_cast<uint8_t *>(answer.data()));
-//     taskData->inputs_count.emplace_back(size);
-//     taskData->outputs_count.emplace_back(size);
-//   }
+    taskData->inputs.emplace_back(reinterpret_cast<uint8_t *>(vec.data()));
+    taskData->outputs.emplace_back(reinterpret_cast<uint8_t *>(answer.data()));
+    taskData->inputs_count.emplace_back(size);
+    taskData->outputs_count.emplace_back(size);
+  }
 
-//   filateva_e_radix_sort_mpi::RadixSort radixSort(taskData);
+  filateva_e_radix_sort_mpi::RadixSort radixSort(taskData);
 
-//   if (world.rank() == 0) {
-//     EXPECT_FALSE(radixSort.validation());
-//   }
-// }
+  if (world.rank() == 0) {
+    EXPECT_FALSE(radixSort.validation());
+  }
+}
 
-// TEST(filateva_e_radix_sort_mpi, less_0) {
-//   boost::mpi::communicator world;
-//   int size = 0;
-//   std::vector<int> vec;
-//   std::vector<int> answer;
+TEST(filateva_e_radix_sort_mpi, less_0) {
+  boost::mpi::communicator world;
+  int size = 0;
+  std::vector<int> vec;
+  std::vector<int> answer;
 
-//   std::shared_ptr<ppc::core::TaskData> taskData = std::make_shared<ppc::core::TaskData>();
+  std::shared_ptr<ppc::core::TaskData> taskData = std::make_shared<ppc::core::TaskData>();
 
-//   if (world.rank() == 0) {
-//     vec.resize(size);
-//     answer.resize(size);
+  if (world.rank() == 0) {
+    vec.resize(size);
+    answer.resize(size);
 
-//     taskData->inputs.emplace_back(reinterpret_cast<uint8_t *>(vec.data()));
-//     taskData->outputs.emplace_back(reinterpret_cast<uint8_t *>(answer.data()));
-//     taskData->inputs_count.emplace_back(-size);
-//     taskData->outputs_count.emplace_back(size);
-//   }
+    taskData->inputs.emplace_back(reinterpret_cast<uint8_t *>(vec.data()));
+    taskData->outputs.emplace_back(reinterpret_cast<uint8_t *>(answer.data()));
+    taskData->inputs_count.emplace_back(-size);
+    taskData->outputs_count.emplace_back(size);
+  }
 
-//   filateva_e_radix_sort_mpi::RadixSort radixSort(taskData);
+  filateva_e_radix_sort_mpi::RadixSort radixSort(taskData);
 
-//   if (world.rank() == 0) {
-//     EXPECT_FALSE(radixSort.validation());
-//   }
-// }
+  if (world.rank() == 0) {
+    EXPECT_FALSE(radixSort.validation());
+  }
+}
