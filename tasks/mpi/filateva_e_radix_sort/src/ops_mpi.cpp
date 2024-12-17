@@ -95,7 +95,7 @@ bool filateva_e_radix_sort_mpi::RadixSort::run() {
 
   std::string s = "\nRank: " + std::to_string(world.rank()) + " vector:\n";
   for (int j = 0; j < local_size; j++) {
-    s += to_string(local_vec[j]) + " ";
+    s += std::to_string(local_vec[j]) + " ";
   }
   std::cerr << s << "\n";
 
