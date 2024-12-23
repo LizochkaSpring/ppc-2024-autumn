@@ -15,10 +15,7 @@ bool filateva_e_radix_sort_seq::RadixSort::pre_processing() {
 
 bool filateva_e_radix_sort_seq::RadixSort::validation() {
   internal_order_test();
-  if (taskData->inputs_count[0] <= 0 || taskData->inputs_count[0] != taskData->outputs_count[0]) {
-    return false;
-  }
-  return true;
+  return taskData->inputs_count[0] > 0 && taskData->inputs_count[0] == taskData->outputs_count[0];
 }
 
 bool filateva_e_radix_sort_seq::RadixSort::run() {
@@ -38,7 +35,7 @@ bool filateva_e_radix_sort_seq::RadixSort::run() {
       negativ_radix_list[std::abs(arr[i]) % raz].push_back(std::abs(arr[i]));
     }
   }
-  
+
   while (max_r / (raz / 10) > 0) {
     raz *= 10;
     std::vector<std::list<int>> temp(kol);
